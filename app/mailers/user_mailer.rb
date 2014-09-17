@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
     def new_pin_email(user)
     @user = user
-    mail( :to => @user.email, :subject => 'Thanks for posting a new pin')
+    mail( :to => user.email, :subject => 'Thanks for posting a new pin')
   end
 end
