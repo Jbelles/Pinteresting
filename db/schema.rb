@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912184413) do
+ActiveRecord::Schema.define(version: 20140922185327) do
+
+# Could not dump table "comments" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -23,9 +26,17 @@ ActiveRecord::Schema.define(version: 20140912184413) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "comment"
   end
 
   add_index "pins", ["integer"], name: "index_pins_on_integer"
+
+  create_table "thoughts", force: true do |t|
+    t.text     "content"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
