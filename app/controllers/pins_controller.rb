@@ -7,6 +7,8 @@ class PinsController < ApplicationController
   end
 
   def show
+    @pin = Pin.find(params[:id])
+    @comment = current_user.comments.build
   end
 
   def new
